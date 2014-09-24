@@ -1,0 +1,29 @@
+{
+    "name": "parsingphase/enigma-simulator",
+    "description": "Enigma Simulator, as built in the project described at http://tdd-deciphered.com/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard George",
+            "email": "richard@phase.org"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Phase\\Enigma\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.2"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
