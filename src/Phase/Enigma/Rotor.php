@@ -33,6 +33,9 @@ class Rotor implements EncryptorInterface
      */
     public function setRingOffset($ringOffset)
     {
+        if(!is_integer($ringOffset) || ($ringOffset<1) || ($ringOffset>26)) {
+            throw new \InvalidArgumentException("Offset must be integer in range 1..26");
+        }
         $this->ringOffset = $ringOffset;
     }
 

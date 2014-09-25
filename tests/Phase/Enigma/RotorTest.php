@@ -17,13 +17,52 @@ class RotorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($rotor instanceof EncryptorInterface, "Rotor must support EncryptorInterface");
     }
 
-    public function testSetAndRememberRingOffset()
+    /**
+     * Ensure we accept a range of valid ring offset values
+     *
+     * @dataProvider validRingOffsetProvider
+     * @param int $ringOffset
+     */
+    public function testSetAndRememberRingOffset($ringOffset)
     {
         $rotor = new Rotor();
-        $ringOffset = 15;
         $rotor->setRingOffset($ringOffset);
         $this->assertSame($ringOffset, $rotor->getRingOffset());
     }
+
+    public function validRingOffsetProvider()
+    {
+        return [
+            [1], // minimum good value
+            [15], // our previous mid-range good value
+            [26] // our maximum good value
+        ];
+    }
+
+    /**
+     * Ensure we accept a range of valid ring offset values
+     *
+     * @dataProvider badRingOffsetProvider
+     * @expectedException \InvalidArgumentException
+     * @param int $ringOffset
+     */
+    public function testRejectBadRingOffset($ringOffset)
+    {
+        $rotor = new Rotor();
+        $rotor->setRingOffset($ringOffset);
+    }
+
+    public function badRingOffsetProvider()
+    {
+        return [
+            [0], // just too low
+            [27], // just too high
+            [0.99], // Not integer, and too low
+            [1.99], // Not integer, but in range
+            ['A QA engineer walks into a bar'] // just wrong
+        ];
+    }
+
 
 //    public function testSetAndRememberCoreMapping ()
 //    {
