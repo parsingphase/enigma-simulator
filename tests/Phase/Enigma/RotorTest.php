@@ -104,4 +104,84 @@ class RotorTest extends \PHPUnit_Framework_TestCase
         $rotor->setCoreMapping($coreMapping);
     }
 
+    function testCoreIdentityMappingReturnsInputAtDefaultOffset()
+    {
+        $rotor = new Rotor();
+        $coreMapping=array(
+            'A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G',
+            'H'=>'H','I'=>'I','J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N',
+            'O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T','U'=>'U',
+            'V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z'
+        );
+        $offset=1; //anything will do for now
+        $rotor->setRingOffset($offset);
+        $rotor->setCoreMapping($coreMapping);
+
+        $testCharacter='V';
+
+        $this->assertSame(
+            $testCharacter,
+            $rotor->getOutputCharacterForInputCharacter($testCharacter)
+        );
+    }
+
+
+    public function testRot13Mapping()
+    {
+        $rotor = new Rotor();
+        $coreMapping=array(
+            'A'=>'N','B'=>'O','C'=>'P','D'=>'Q','E'=>'R','F'=>'S','G'=>'T',
+            'H'=>'U','I'=>'V','J'=>'W','K'=>'X','L'=>'Y','M'=>'Z','N'=>'A',
+            'O'=>'B','P'=>'C','Q'=>'D','R'=>'E','S'=>'F','T'=>'G','U'=>'H',
+            'V'=>'I','W'=>'J','X'=>'K','Y'=>'L','Z'=>'M'
+        );
+        $offset=1; // doesn't matter for this rotor
+        $rotor->setRingOffset($offset);
+        $rotor->setCoreMapping($coreMapping);
+
+        $testInputCharacter='V';
+        $testOutputCharacter='I';
+
+        $this->assertSame(
+            $testOutputCharacter,
+            $rotor->getOutputCharacterForInputCharacter($testInputCharacter)
+        );
+    }
+
+
+    /**
+     * Test routing of data through ring one at various offsets
+     * @param int $offset
+     * @param string $testInputCharacter
+     * @param string $testOutputCharacter
+     * @dataProvider rotorIDataProvider
+     */
+    function testRotorIMappingOffset($offset, $testInputCharacter, $testOutputCharacter)
+    {
+        $rotor = new Rotor();
+        $coreMapping=array(
+            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D',
+            'H'=>'Q','I'=>'V','J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W',
+            'O'=>'Y','P'=>'H','Q'=>'X','R'=>'U','S'=>'S','T'=>'P',
+            'U'=>'A','V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+        );
+
+        $rotor->setRingOffset($offset);
+        $rotor->setCoreMapping($coreMapping);
+
+
+        $this->assertSame($testOutputCharacter,
+            $rotor->getOutputCharacterForInputCharacter($testInputCharacter));
+    }
+
+    public function rotorIDataProvider()
+    {
+        return [
+            [1, 'V', 'I'],
+            [2, 'V', 'B'],
+            [16, 'G', 'J']
+        ];
+    }
+
+
 }
