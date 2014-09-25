@@ -184,4 +184,45 @@ class RotorTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * Try and encrypt something invalid
+     * @dataProvider badCharacterIDataProvider
+     * @expectedException \InvalidArgumentException
+     */
+    public function testEncryptBadCharacter($characters)
+    {
+        $rotor = new Rotor();
+        $coreMapping = [
+            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D',
+            'H'=>'Q','I'=>'V','J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W',
+            'O'=>'Y','P'=>'H','Q'=>'X','R'=>'U','S'=>'S','T'=>'P','U'=>'A',
+            'V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+        ];
+        $offset = 0;
+        $rotor->setRingOffset($offset);
+        $rotor->setCoreMapping($coreMapping);
+
+        // and this should cause the exception:
+        $rotor->getOutputCharacterForInputCharacter($characters);
+    }
+
+
+    public function badCharacterIDataProvider()
+    {
+        return [[' '], [''], [2], ['toolong']];
+    }
+
+
+    /**
+     * Ensure we accept character ring offset values
+     *
+     * @dataProvider validRingOffsetProvider
+     */
+    public function testSetAndRememberCharacterRingOffset()
+    {
+        $rotor = new Rotor();
+        $rotor->setRingOffset('M');
+        $this->assertSame(13, $rotor->getRingOffset());
+    }
+
 }

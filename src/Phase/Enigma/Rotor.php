@@ -10,7 +10,7 @@ namespace Phase\Enigma;
 class Rotor implements EncryptorInterface
 {
     /**
-     * @var string Single letter; Position of the ring relative to the core
+     * @var int Position of the ring relative to the core
      */
     protected $ringOffset;
 
@@ -29,10 +29,14 @@ class Rotor implements EncryptorInterface
     }
 
     /**
-     * @param string $ringOffset
+     * @param string|int $ringOffset
      */
     public function setRingOffset($ringOffset)
     {
+        if (preg_match('/^[A-Z]$/', $ringOffset)) {
+            $ringOffset = $this->charToAlphabetPosition($ringOffset);
+        }
+
         if (!is_integer($ringOffset) || ($ringOffset < 1) || ($ringOffset > 26)) {
             throw new \InvalidArgumentException("Offset must be integer in range 1..26");
         }
@@ -68,6 +72,10 @@ class Rotor implements EncryptorInterface
     public function getOutputCharacterForInputCharacter ($inputCharacter)
     {
         $inputCharacter = strtoupper($inputCharacter);
+
+        if(!preg_match('/^[A-Z]$/',$inputCharacter)) {
+            throw new \InvalidArgumentException;
+        }
 
         $coreInputCharacter = $this->getCharacterOffsetBy(
             $inputCharacter,
