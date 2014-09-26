@@ -80,4 +80,20 @@ class RotorFactoryTest extends \PHPUnit_Framework_TestCase
         return $parameterLists;
     }
 
+    /**
+     * Make sure each rotor's notch positions are coherent
+     * @dataProvider supportedRotorsDataProvider
+     *
+     * @param Rotor $rotor Rotor to test
+     */
+    public function testAllRotorNotches(Rotor $rotor)
+    {
+        $notches = $rotor->getNotchPositions();
+        $this->assertTrue(is_array($notches));
+        $this->assertTrue(count($notches) < 3);
+        foreach ($notches as $position) {
+            $this->assertRegExp('/^[A-Z]$/', $position);
+        }
+    }
+
 }

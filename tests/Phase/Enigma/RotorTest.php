@@ -225,4 +225,46 @@ class RotorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(13, $rotor->getRingOffset());
     }
 
+    /**
+     * @dataProvider validNotchSettingsProvider
+     * @param string[] $notchPositions One or more character positions
+     */
+    public function testValidNotchSetter($notchPositions)
+    {
+        $rotor = new Rotor();
+        $rotor->setNotchPositions($notchPositions);
+        $this->assertSame($notchPositions, $rotor->getNotchPositions());
+    }
+
+    public function validNotchSettingsProvider()
+    {
+        return [
+            [['A']], // allow one notch
+            [['A', 'J']], // allow two notches
+            [['Z']], // check the upper limit
+            [[]] // allow empty array
+        ];
+    }
+
+    /**
+     * @dataProvider invalidNotchSettingsProvider
+     * @param string[] $notchPositions One or more character positions
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidNotchSetter($notchPositions)
+    {
+        $rotor = new Rotor();
+        $rotor->setNotchPositions($notchPositions);
+    }
+
+
+    public function invalidNotchSettingsProvider()
+    {
+        return [
+            [['']], // non-character
+            [['AB']], // non-single-character
+            [['A', 'J', 'Z']], // don't allow three notches
+        ];
+    }
+
 }

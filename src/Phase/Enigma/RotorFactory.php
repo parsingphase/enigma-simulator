@@ -41,6 +41,20 @@ class RotorFactory
         self::ROTOR_GAMMA => 'FSOKANUERHMBTIYCWLQPZXVGJD'
     ];
 
+
+    protected $rotorNotchPositions = [
+        self::ROTOR_ONE => ['Q'],
+        self::ROTOR_TWO => ['E'],
+        self::ROTOR_THREE => ['V'],
+        self::ROTOR_FOUR => ['J'],
+        self::ROTOR_FIVE => ['Z'],
+        self::ROTOR_SIX => ['Z', 'M'],
+        self::ROTOR_SEVEN => ['Z', 'M'],
+        self::ROTOR_EIGHT => ['Z', 'M'],
+        self::ROTOR_BETA => [],
+        self::ROTOR_GAMMA => []
+    ];
+
     /**
      * @param mixed $instanceId A rotor name from the self::ROTOR_* constant list
      * @return Rotor
@@ -53,6 +67,7 @@ class RotorFactory
         $coreMapping = array_combine($inputs, $outputs);
         $rotor = new Rotor();
         $rotor->setCoreMapping($coreMapping);
+        $rotor->setNotchPositions($this->rotorNotchPositions[$instanceId]);
         $rotor->setRingOffset('A'); // useful default
         return $rotor;
     }

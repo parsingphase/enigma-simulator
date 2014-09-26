@@ -14,11 +14,15 @@ class Rotor implements EncryptorInterface
      */
     protected $ringOffset;
 
-
     /**
      * @var array 26-element character-indexed array of input to output
      */
     protected $coreMapping;
+
+    /**
+     * @var string[] One or two single char positions determining the notch offsets
+     */
+    protected $notchPositions;
 
     /**
      * @return string
@@ -64,16 +68,41 @@ class Rotor implements EncryptorInterface
     }
 
     /**
+     * @return \string[]
+     */
+    public function getNotchPositions()
+    {
+        return $this->notchPositions;
+    }
+
+    /**
+     * @param \string[] $notchPositions
+     */
+    public function setNotchPositions($notchPositions)
+    {
+        if (is_array($notchPositions) && (count($notchPositions) < 3)) {
+            foreach ($notchPositions as $position) {
+                if (!preg_match('/^[A-Z]$/', $position)) {
+                    throw new \InvalidArgumentException;
+                }
+            }
+            $this->notchPositions = $notchPositions;
+        } else {
+            throw new \InvalidArgumentException;
+        }
+    }
+
+    /**
      * Return the output for the given encryptor input in its current state
      *
      * @param string $inputCharacter Single character, uppercase
      * @return string Single character, uppercase
      */
-    public function getOutputCharacterForInputCharacter ($inputCharacter)
+    public function getOutputCharacterForInputCharacter($inputCharacter)
     {
         $inputCharacter = strtoupper($inputCharacter);
 
-        if(!preg_match('/^[A-Z]$/',$inputCharacter)) {
+        if (!preg_match('/^[A-Z]$/', $inputCharacter)) {
             throw new \InvalidArgumentException;
         }
 
