@@ -8,8 +8,9 @@
 
 namespace Phase\Enigma;
 
+use Instantiator\Exception\ExceptionInterface;
 
-class RotorSlot
+class RotorSlot implements ExceptionInterface
 {
 
     /**
@@ -87,5 +88,21 @@ class RotorSlot
         $char = (chr($position + 64));
 
         return $char;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRotorOffset()
+    {
+        return $this->rotorOffset;
+    }
+
+    public function incrementRotorOffset()
+    {
+        $this->rotorOffset++;
+        if ($this->rotorOffset > 26) {
+            $this->rotorOffset = 1;
+        }
     }
 }

@@ -51,4 +51,37 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @dataProvider offsetIncrementDataProvider
+     */
+    public function testRotorOffsetIncrement($originalOffset, $newOffset)
+    {
+        $rotor = new Rotor();
+        $coreMapping=[
+            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D','H'=>'Q','I'=>'V',
+            'J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W','O'=>'Y','P'=>'H','Q'=>'X','R'=>'U',
+            'S'=>'S','T'=>'P','U'=>'A','V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+        ];
+
+        $rotor->setRingOffset(1);
+        $rotor->setCoreMapping($coreMapping);
+
+        $slot=new RotorSlot();
+        $slot->loadRotor($rotor);
+        $slot->setRotorOffset($originalOffset);
+
+        $this->assertSame($originalOffset,$slot->getRotorOffset());
+        $slot->incrementRotorOffset();
+        $this->assertSame($newOffset, $slot->getRotorOffset());
+    }
+
+    public function offsetIncrementDataProvider()
+    {
+        return [
+            [1, 2],
+            [13, 14],
+            [26, 1]
+        ];
+    }
+
 }
