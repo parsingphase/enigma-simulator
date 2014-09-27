@@ -84,4 +84,100 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * Test one pawl to the right of one rotor
+     */
+    public function testEngagePawlSingleRotorSinglePawl()
+    {
+        $pawl = new Pawl();
+        $rotorFactory = new RotorFactory();
+        $rotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_ONE);
+        $rotorSlot = new RotorSlot();
+        $rotorSlot->loadRotor($rotor);
+        $rotorSlot->setRightPawl($pawl); // make pawls act on slots as it saves us reconfiguring if we swap rotors
+
+        $this->assertTrue($pawl->canPush()); // no rotor to right of pawl
+        $this->assertTrue($rotorSlot->canEngagePawl()); // will always push in this situation
+    }
+
+    /**
+     * Test one pawl between two rotors
+     */
+    public function testEngagePawlTwoRotorsSinglePawl()
+    {
+        $pawl = new Pawl();
+        $rotorFactory = new RotorFactory();
+        $leftRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_ONE);
+        $leftRotorSlot = new RotorSlot();
+        $leftRotorSlot->loadRotor($leftRotor);
+        $leftRotorSlot->setRightPawl($pawl); // make pawls act on slots as it saves us reconfiguring if we swap rotors
+
+        $rightRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_TWO);
+        $rightRotorSlot = new RotorSlot();
+        $rightRotorSlot->loadRotor($rightRotor);
+        $rightRotorSlot->setLeftPawl($pawl);
+
+        $pawl->setRightRotorSlot($rightRotorSlot);
+
+        // Pawl can only engage if both rotors are in turnover positions:
+        $leftRotorSlot->setRotorOffset($leftRotor->getNotchPositions()[0]);
+        $rightRotorSlot->setRotorOffset($rightRotor->getNotchPositions()[0]);
+
+        $this->assertTrue($pawl->canPush());
+        $this->assertTrue($leftRotorSlot->canEngagePawl());
+        $this->assertTrue($rightRotorSlot->canEngagePawl());
+
+        // then turn rotors, and neither can push on next attempt
+
+        $leftRotorSlot->incrementRotorOffset();
+        $rightRotorSlot->incrementRotorOffset();
+
+        $this->assertFalse($pawl->canPush());
+        $this->assertFalse($leftRotorSlot->canEngagePawl());
+        $this->assertFalse($rightRotorSlot->canEngagePawl());
+    }
+
+
+    /**
+     * Test two rotors with pawl to right of each
+     */
+    public function testEngagePawlTwoRotorsTwoPawls()
+    {
+        $leftPawl = new Pawl();
+        $rightPawl = new Pawl();
+        $rotorFactory = new RotorFactory();
+        $leftRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_ONE);
+        $leftRotorSlot = new RotorSlot();
+        $leftRotorSlot->loadRotor($leftRotor);
+        $leftRotorSlot->setRightPawl($leftPawl); // make pawls act on slots as it saves us reconfiguring if we swap rotors
+
+        $rightRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_TWO);
+        $rightRotorSlot = new RotorSlot();
+        $rightRotorSlot->loadRotor($rightRotor);
+        $rightRotorSlot->setLeftPawl($leftPawl);
+        $rightRotorSlot->setRightPawl($rightPawl);
+
+        $leftPawl->setRightRotorSlot($rightRotorSlot);
+
+        // Pawl can only engage if both rotors are in turnover positions:
+        $leftRotorSlot->setRotorOffset($leftRotor->getNotchPositions()[0]);
+        $rightRotorSlot->setRotorOffset($rightRotor->getNotchPositions()[0]);
+
+        $this->assertTrue($leftPawl->canPush());
+        $this->assertTrue($rightPawl->canPush());
+        $this->assertTrue($leftRotorSlot->canEngagePawl());
+        $this->assertTrue($rightRotorSlot->canEngagePawl());
+
+        // then turn rotors, and only right pawl/slot can push on next attempt
+
+        $leftRotorSlot->incrementRotorOffset();
+        $rightRotorSlot->incrementRotorOffset();
+
+        $this->assertFalse($leftPawl->canPush());
+        $this->assertTrue($rightPawl->canPush());
+        $this->assertFalse($leftRotorSlot->canEngagePawl());
+        $this->assertTrue($rightRotorSlot->canEngagePawl());
+    }
+
+
 }

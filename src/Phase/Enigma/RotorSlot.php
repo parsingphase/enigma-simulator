@@ -8,9 +8,7 @@
 
 namespace Phase\Enigma;
 
-use Instantiator\Exception\ExceptionInterface;
-
-class RotorSlot implements ExceptionInterface
+class RotorSlot implements EncryptorInterface
 {
 
     /**
@@ -22,6 +20,15 @@ class RotorSlot implements ExceptionInterface
      */
     protected $rotorOffset;
 
+    /**
+     * @var Pawl
+     */
+    protected $leftPawl;
+
+    /**
+     * @var Pawl
+     */
+    protected $rightPawl;
 
     public function loadRotor(Rotor $rotor)
     {
@@ -112,5 +119,45 @@ class RotorSlot implements ExceptionInterface
     public function getRotor()
     {
         return $this->rotor;
+    }
+
+    /**
+     * @return Pawl
+     */
+    public function getLeftPawl()
+    {
+        return $this->leftPawl;
+    }
+
+    /**
+     * @param Pawl $leftPawl
+     */
+    public function setLeftPawl($leftPawl)
+    {
+        $this->leftPawl = $leftPawl;
+    }
+
+    /**
+     * @return Pawl
+     */
+    public function getRightPawl()
+    {
+        return $this->rightPawl;
+    }
+
+    /**
+     * @param Pawl $rightPawl
+     */
+    public function setRightPawl($rightPawl)
+    {
+        $this->rightPawl = $rightPawl;
+    }
+
+    /**
+     * Are either of the pawls adjacent to this slot in a position to engage the rotor?
+     */
+    public function canEngagePawl()
+    {
+        return(($this->leftPawl && $this->leftPawl->canPush()) || ($this->rightPawl && $this->rightPawl->canPush()));
     }
 }
