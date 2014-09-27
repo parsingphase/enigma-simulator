@@ -105,4 +105,12 @@ class RotorSlot implements ExceptionInterface
             $this->rotorOffset = 1;
         }
     }
+
+    /**
+     * @return Rotor
+     */
+    public function getRotor()
+    {
+        return $this->rotor;
+    }
 }
