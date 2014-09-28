@@ -23,10 +23,32 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
     {
         $rotor = new Rotor();
         $coreMapping = [ // Rotor I
-            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D',
-            'H'=>'Q','I'=>'V','J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W',
-            'O'=>'Y','P'=>'H','Q'=>'X','R'=>'U','S'=>'S','T'=>'P','U'=>'A',
-            'V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+            'A' => 'E',
+            'B' => 'K',
+            'C' => 'M',
+            'D' => 'F',
+            'E' => 'L',
+            'F' => 'G',
+            'G' => 'D',
+            'H' => 'Q',
+            'I' => 'V',
+            'J' => 'Z',
+            'K' => 'N',
+            'L' => 'T',
+            'M' => 'O',
+            'N' => 'W',
+            'O' => 'Y',
+            'P' => 'H',
+            'Q' => 'X',
+            'R' => 'U',
+            'S' => 'S',
+            'T' => 'P',
+            'U' => 'A',
+            'V' => 'I',
+            'W' => 'B',
+            'X' => 'R',
+            'Y' => 'C',
+            'Z' => 'J'
         ];
 
         $rotor->setRingOffset($ringOffset);
@@ -46,10 +68,10 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
 
     public function singleSlotRotorOneRingOffsetOneDataProvider()
     {
-        return[
+        return [
             //$slotInput, $rotorOffset, $ringOffset, $output
-            ['V','A','Z','A'],
-            ['V','C','Z','Z'],
+            ['V', 'A', 'Z', 'A'],
+            ['V', 'C', 'Z', 'Z'],
         ];
     }
 
@@ -60,20 +82,43 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
     public function testRotorOffsetIncrement($originalOffset, $newOffset)
     {
         $rotor = new Rotor();
-        $coreMapping=[
-            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D','H'=>'Q','I'=>'V',
-            'J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W','O'=>'Y','P'=>'H','Q'=>'X','R'=>'U',
-            'S'=>'S','T'=>'P','U'=>'A','V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+        $coreMapping = [
+            'A' => 'E',
+            'B' => 'K',
+            'C' => 'M',
+            'D' => 'F',
+            'E' => 'L',
+            'F' => 'G',
+            'G' => 'D',
+            'H' => 'Q',
+            'I' => 'V',
+            'J' => 'Z',
+            'K' => 'N',
+            'L' => 'T',
+            'M' => 'O',
+            'N' => 'W',
+            'O' => 'Y',
+            'P' => 'H',
+            'Q' => 'X',
+            'R' => 'U',
+            'S' => 'S',
+            'T' => 'P',
+            'U' => 'A',
+            'V' => 'I',
+            'W' => 'B',
+            'X' => 'R',
+            'Y' => 'C',
+            'Z' => 'J'
         ];
 
         $rotor->setRingOffset(1);
         $rotor->setCoreMapping($coreMapping);
 
-        $slot=new RotorSlot();
+        $slot = new RotorSlot();
         $slot->loadRotor($rotor);
         $slot->setRotorOffset($originalOffset);
 
-        $this->assertSame($originalOffset,$slot->getRotorOffset());
+        $this->assertSame($originalOffset, $slot->getRotorOffset());
         $slot->incrementRotorOffset();
         $this->assertSame($newOffset, $slot->getRotorOffset());
     }
@@ -152,7 +197,9 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
         $leftRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_ONE);
         $leftRotorSlot = new RotorSlot();
         $leftRotorSlot->loadRotor($leftRotor);
-        $leftRotorSlot->setRightPawl($leftPawl); // make pawls act on slots as it saves us reconfiguring if we swap rotors
+        $leftRotorSlot->setRightPawl(
+            $leftPawl
+        ); // make pawls act on slots as it saves us reconfiguring if we swap rotors
 
         $rightRotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_TWO);
         $rightRotorSlot = new RotorSlot();
@@ -181,6 +228,4 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($leftRotorSlot->canEngagePawl());
         $this->assertTrue($rightRotorSlot->canEngagePawl());
     }
-
-
 }

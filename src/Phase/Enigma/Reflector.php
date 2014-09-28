@@ -17,15 +17,15 @@ class Reflector implements EncryptorInterface
     protected $mapping;
 
 
-        public function setHalfMapping($halfMapping)
-        {
-            if (!$this->isValidHalfMapping($halfMapping)) {
-                throw new \InvalidArgumentException;
-            }
-            $this->mapping = $halfMapping + array_flip($halfMapping);
+    public function setHalfMapping($halfMapping)
+    {
+        if (!$this->isValidHalfMapping($halfMapping)) {
+            throw new \InvalidArgumentException;
         }
+        $this->mapping = $halfMapping + array_flip($halfMapping);
+    }
 
-        /**
+    /**
      * Return the output for the given encryptor input in its current state
      *
      * @param string $inputCharacter Single character, uppercase
@@ -64,5 +64,4 @@ class Reflector implements EncryptorInterface
 
         return $valid;
     }
-
 }

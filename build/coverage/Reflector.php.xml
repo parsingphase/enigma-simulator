@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Reflector.php">
+    <totals>
+      <lines total="67" comments="15" code="52" executable="27" executed="23" percent="85.19%"/>
+      <methods count="3" tested="2" percent="66.67%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="Reflector" start="12" executable="27" executed="23" crap="12.47">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Phase\Enigma"/>
+      <method name="setHalfMapping" signature="setHalfMapping($halfMapping)" start="20" end="26" crap="2" executable="4" executed="4" coverage="100"/>
+      <method name="getOutputCharacterForInputCharacter" signature="getOutputCharacterForInputCharacter($inputCharacter)" start="34" end="37" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="isValidHalfMapping" signature="isValidHalfMapping($halfMapping)" start="39" end="66" crap="9.49" executable="22" executed="18" coverage="81.818181818182"/>
+    </class>
+    <coverage>
+      <line nr="22">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #2"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #5"/>
+      </line>
+      <line nr="23">
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #2"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #5"/>
+      </line>
+      <line nr="25">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="26">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="36">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="41">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #2"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #5"/>
+      </line>
+      <line nr="42">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #2"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #5"/>
+      </line>
+      <line nr="43">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+      </line>
+      <line nr="44">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+      </line>
+      <line nr="45">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="46">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="47">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="48">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="52">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="53">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="54">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="58">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="59">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="60">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="61">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="62">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+      </line>
+      <line nr="63">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+      </line>
+      <line nr="65">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testCreateAndConfigureRotor with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #0"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #1"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #2"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #3"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #4"/>
+        <covered by="Phase\Enigma\ReflectorTest::testInvalidRotorHalfMappings with data set #5"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

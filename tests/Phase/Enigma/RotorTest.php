@@ -64,26 +64,48 @@ class RotorTest extends \PHPUnit_Framework_TestCase
     }
 
 
-//    public function testSetAndRememberCoreMapping ()
-//    {
-//        $rotor = new Rotor();
-//        $coreMapping=array();
-//        $rotor->setCoreMapping($coreMapping);
-//        $this->assertSame($coreMapping,$rotor->getCoreMapping());
-//
-//    }
+    //    public function testSetAndRememberCoreMapping ()
+    //    {
+    //        $rotor = new Rotor();
+    //        $coreMapping=array();
+    //        $rotor->setCoreMapping($coreMapping);
+    //        $this->assertSame($coreMapping,$rotor->getCoreMapping());
+    //
+    //    }
 
-    public function testSetAndRememberValidCoreIdentityMapping ()
+    public function testSetAndRememberValidCoreIdentityMapping()
     {
         $rotor = new Rotor();
-        $coreMapping=array(
-            'A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G',
-            'H'=>'H','I'=>'I','J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N',
-            'O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T','U'=>'U',
-            'V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z'
+        $coreMapping = array(
+            'A' => 'A',
+            'B' => 'B',
+            'C' => 'C',
+            'D' => 'D',
+            'E' => 'E',
+            'F' => 'F',
+            'G' => 'G',
+            'H' => 'H',
+            'I' => 'I',
+            'J' => 'J',
+            'K' => 'K',
+            'L' => 'L',
+            'M' => 'M',
+            'N' => 'N',
+            'O' => 'O',
+            'P' => 'P',
+            'Q' => 'Q',
+            'R' => 'R',
+            'S' => 'S',
+            'T' => 'T',
+            'U' => 'U',
+            'V' => 'V',
+            'W' => 'W',
+            'X' => 'X',
+            'Y' => 'Y',
+            'Z' => 'Z'
         );
         $rotor->setCoreMapping($coreMapping);
-        $this->assertSame($coreMapping,$rotor->getCoreMapping());
+        $this->assertSame($coreMapping, $rotor->getCoreMapping());
     }
 
     /**
@@ -95,29 +117,72 @@ class RotorTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
         $rotor = new Rotor();
-        $coreMapping=array(
-            'A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G',
-            'H'=>'H','I'=>'I','J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N',
-            'O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T','U'=>'U',
-            'V'=>'V','W'=>'W','X'=>'X','Y'=>'Y'
+        $coreMapping = array(
+            'A' => 'A',
+            'B' => 'B',
+            'C' => 'C',
+            'D' => 'D',
+            'E' => 'E',
+            'F' => 'F',
+            'G' => 'G',
+            'H' => 'H',
+            'I' => 'I',
+            'J' => 'J',
+            'K' => 'K',
+            'L' => 'L',
+            'M' => 'M',
+            'N' => 'N',
+            'O' => 'O',
+            'P' => 'P',
+            'Q' => 'Q',
+            'R' => 'R',
+            'S' => 'S',
+            'T' => 'T',
+            'U' => 'U',
+            'V' => 'V',
+            'W' => 'W',
+            'X' => 'X',
+            'Y' => 'Y'
         );
         $rotor->setCoreMapping($coreMapping);
     }
 
-    function testCoreIdentityMappingReturnsInputAtDefaultOffset()
+    public function testCoreIdentityMappingReturnsInputAtDefaultOffset()
     {
         $rotor = new Rotor();
-        $coreMapping=array(
-            'A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G',
-            'H'=>'H','I'=>'I','J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N',
-            'O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T','U'=>'U',
-            'V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z'
+        $coreMapping = array(
+            'A' => 'A',
+            'B' => 'B',
+            'C' => 'C',
+            'D' => 'D',
+            'E' => 'E',
+            'F' => 'F',
+            'G' => 'G',
+            'H' => 'H',
+            'I' => 'I',
+            'J' => 'J',
+            'K' => 'K',
+            'L' => 'L',
+            'M' => 'M',
+            'N' => 'N',
+            'O' => 'O',
+            'P' => 'P',
+            'Q' => 'Q',
+            'R' => 'R',
+            'S' => 'S',
+            'T' => 'T',
+            'U' => 'U',
+            'V' => 'V',
+            'W' => 'W',
+            'X' => 'X',
+            'Y' => 'Y',
+            'Z' => 'Z'
         );
-        $offset=1; //anything will do for now
+        $offset = 1; //anything will do for now
         $rotor->setRingOffset($offset);
         $rotor->setCoreMapping($coreMapping);
 
-        $testCharacter='V';
+        $testCharacter = 'V';
 
         $this->assertSame(
             $testCharacter,
@@ -129,18 +194,40 @@ class RotorTest extends \PHPUnit_Framework_TestCase
     public function testRot13Mapping()
     {
         $rotor = new Rotor();
-        $coreMapping=array(
-            'A'=>'N','B'=>'O','C'=>'P','D'=>'Q','E'=>'R','F'=>'S','G'=>'T',
-            'H'=>'U','I'=>'V','J'=>'W','K'=>'X','L'=>'Y','M'=>'Z','N'=>'A',
-            'O'=>'B','P'=>'C','Q'=>'D','R'=>'E','S'=>'F','T'=>'G','U'=>'H',
-            'V'=>'I','W'=>'J','X'=>'K','Y'=>'L','Z'=>'M'
+        $coreMapping = array(
+            'A' => 'N',
+            'B' => 'O',
+            'C' => 'P',
+            'D' => 'Q',
+            'E' => 'R',
+            'F' => 'S',
+            'G' => 'T',
+            'H' => 'U',
+            'I' => 'V',
+            'J' => 'W',
+            'K' => 'X',
+            'L' => 'Y',
+            'M' => 'Z',
+            'N' => 'A',
+            'O' => 'B',
+            'P' => 'C',
+            'Q' => 'D',
+            'R' => 'E',
+            'S' => 'F',
+            'T' => 'G',
+            'U' => 'H',
+            'V' => 'I',
+            'W' => 'J',
+            'X' => 'K',
+            'Y' => 'L',
+            'Z' => 'M'
         );
-        $offset=1; // doesn't matter for this rotor
+        $offset = 1; // doesn't matter for this rotor
         $rotor->setRingOffset($offset);
         $rotor->setCoreMapping($coreMapping);
 
-        $testInputCharacter='V';
-        $testOutputCharacter='I';
+        $testInputCharacter = 'V';
+        $testOutputCharacter = 'I';
 
         $this->assertSame(
             $testOutputCharacter,
@@ -156,25 +243,51 @@ class RotorTest extends \PHPUnit_Framework_TestCase
      * @param string $testOutputCharacter
      * @dataProvider rotorIDataProvider
      */
-    function testRotorIMappingOffset($offset, $testInputCharacter, $testOutputCharacter)
+    public function testRotorIMappingOffset($offset, $testInputCharacter, $testOutputCharacter)
     {
         $rotor = new Rotor();
-        $coreMapping=array(
-            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D',
-            'H'=>'Q','I'=>'V','J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W',
-            'O'=>'Y','P'=>'H','Q'=>'X','R'=>'U','S'=>'S','T'=>'P',
-            'U'=>'A','V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+        $coreMapping = array(
+            'A' => 'E',
+            'B' => 'K',
+            'C' => 'M',
+            'D' => 'F',
+            'E' => 'L',
+            'F' => 'G',
+            'G' => 'D',
+            'H' => 'Q',
+            'I' => 'V',
+            'J' => 'Z',
+            'K' => 'N',
+            'L' => 'T',
+            'M' => 'O',
+            'N' => 'W',
+            'O' => 'Y',
+            'P' => 'H',
+            'Q' => 'X',
+            'R' => 'U',
+            'S' => 'S',
+            'T' => 'P',
+            'U' => 'A',
+            'V' => 'I',
+            'W' => 'B',
+            'X' => 'R',
+            'Y' => 'C',
+            'Z' => 'J'
         );
 
         $rotor->setRingOffset($offset);
         $rotor->setCoreMapping($coreMapping);
 
 
-        $this->assertSame($testOutputCharacter,
-            $rotor->getOutputCharacterForInputCharacter($testInputCharacter));
+        $this->assertSame(
+            $testOutputCharacter,
+            $rotor->getOutputCharacterForInputCharacter($testInputCharacter)
+        );
 
-        $this->assertSame($testInputCharacter,
-            $rotor->getOutputCharacterForInputCharacterReversedSignal($testOutputCharacter));
+        $this->assertSame(
+            $testInputCharacter,
+            $rotor->getOutputCharacterForInputCharacterReversedSignal($testOutputCharacter)
+        );
     }
 
     public function rotorIDataProvider()
@@ -196,10 +309,32 @@ class RotorTest extends \PHPUnit_Framework_TestCase
     {
         $rotor = new Rotor();
         $coreMapping = [
-            'A'=>'E','B'=>'K','C'=>'M','D'=>'F','E'=>'L','F'=>'G','G'=>'D',
-            'H'=>'Q','I'=>'V','J'=>'Z','K'=>'N','L'=>'T','M'=>'O','N'=>'W',
-            'O'=>'Y','P'=>'H','Q'=>'X','R'=>'U','S'=>'S','T'=>'P','U'=>'A',
-            'V'=>'I','W'=>'B','X'=>'R','Y'=>'C','Z'=>'J'
+            'A' => 'E',
+            'B' => 'K',
+            'C' => 'M',
+            'D' => 'F',
+            'E' => 'L',
+            'F' => 'G',
+            'G' => 'D',
+            'H' => 'Q',
+            'I' => 'V',
+            'J' => 'Z',
+            'K' => 'N',
+            'L' => 'T',
+            'M' => 'O',
+            'N' => 'W',
+            'O' => 'Y',
+            'P' => 'H',
+            'Q' => 'X',
+            'R' => 'U',
+            'S' => 'S',
+            'T' => 'P',
+            'U' => 'A',
+            'V' => 'I',
+            'W' => 'B',
+            'X' => 'R',
+            'Y' => 'C',
+            'Z' => 'J'
         ];
         $offset = 0;
         $rotor->setRingOffset($offset);
@@ -269,5 +404,4 @@ class RotorTest extends \PHPUnit_Framework_TestCase
             [['A', 'J', 'Z']], // don't allow three notches
         ];
     }
-
 }

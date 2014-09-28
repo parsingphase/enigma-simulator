@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="RotorFactory.php">
+    <totals>
+      <lines total="88" comments="17" code="71" executable="13" executed="12" percent="92.31%"/>
+      <methods count="3" tested="2" percent="66.67%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="RotorFactory" start="12" executable="13" executed="12" crap="4.01">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Phase\Enigma"/>
+      <method name="buildRotorInstance" signature="buildRotorInstance($instanceId)" start="62" end="73" crap="1" executable="9" executed="9" coverage="100"/>
+      <method name="getSupportedRotorIdentities" signature="getSupportedRotorIdentities()" start="75" end="78" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="getRotorSpecString" signature="getRotorSpecString($rotorId)" start="80" end="87" crap="2" executable="3" executed="3" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="64">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryRejectsBuildsWithBadName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="65">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="66">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="67">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="68">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="69">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="70">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="71">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="72">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="82">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryRejectsBuildsWithBadName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="83">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryBuildsRotorsWithValidName"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlSingleRotorSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsSinglePawl"/>
+        <covered by="Phase\Enigma\RotorSlotTest::testEngagePawlTwoRotorsTwoPawls"/>
+      </line>
+      <line nr="85">
+        <covered by="Phase\Enigma\RotorFactoryTest::testFactoryRejectsBuildsWithBadName"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

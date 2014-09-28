@@ -39,7 +39,7 @@ class RotorFactoryTest extends \PHPUnit_Framework_TestCase
      *
      * @param Rotor $rotor Rotor to test
      */
-    function testCoherentRotorIdentities(Rotor $rotor)
+    public function testCoherentRotorIdentities(Rotor $rotor)
     {
         $mapping = $rotor->getCoreMapping();
         $this->assertTrue(is_array($mapping));
@@ -95,5 +95,4 @@ class RotorFactoryTest extends \PHPUnit_Framework_TestCase
             $this->assertRegExp('/^[A-Z]$/', $position);
         }
     }
-
 }

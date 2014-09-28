@@ -120,13 +120,13 @@ class Machine implements EncryptorInterface
 
     public function performTurnover()
     {
-        $rotorSlotsToTurn=[];
+        $rotorSlotsToTurn = [];
         foreach ($this->rotorSlots as $index => $rotorSlot) {
             if ($rotorSlot->canEngagePawl()) {
-                $rotorSlotsToTurn[]=$index;
+                $rotorSlotsToTurn[] = $index;
             }
         }
-        foreach($rotorSlotsToTurn as $index) {
+        foreach ($rotorSlotsToTurn as $index) {
             $this->rotorSlots[$index]->incrementRotorOffset();
         }
     }

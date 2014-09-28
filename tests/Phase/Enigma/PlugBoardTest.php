@@ -19,7 +19,7 @@ class PlugboardTest extends \PHPUnit_Framework_TestCase
      * @param $out String single character
      * @return null
      */
-    function testSubstitutions($connections, $in, $out)
+    public function testSubstitutions($connections, $in, $out)
     {
         $plugboard = new Plugboard();
         $plugboard->setCableConnections($connections);
@@ -36,7 +36,7 @@ class PlugboardTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    function connectionsDataProvider()
+    public function connectionsDataProvider()
     {
         $testData = [
             [[], 'A', 'A'], // Test identity mapping with no cables plugged

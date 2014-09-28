@@ -19,7 +19,9 @@
         "php": "~5.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.2"
+        "phpunit/phpunit": "~4.2",
+        "phploc/phploc": "~2.0",
+        "squizlabs/php_codesniffer": "~1.5"
     },
     "extra": {
         "branch-alias": {

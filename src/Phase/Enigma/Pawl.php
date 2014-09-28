@@ -47,5 +47,4 @@ class Pawl
 
         return $canPush;
     }
-
 }

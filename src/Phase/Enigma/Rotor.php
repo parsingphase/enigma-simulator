@@ -175,5 +175,4 @@ class Rotor implements EncryptorInterface
 
         return $char;
     }
-
 }

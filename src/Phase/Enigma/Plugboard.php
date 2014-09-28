@@ -55,5 +55,4 @@ class Plugboard implements EncryptorInterface
 
         return $char;
     }
-
 }

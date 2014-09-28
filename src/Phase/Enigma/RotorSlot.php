@@ -182,5 +182,4 @@ class RotorSlot implements EncryptorInterface
     {
         return (($this->leftPawl && $this->leftPawl->canPush()) || ($this->rightPawl && $this->rightPawl->canPush()));
     }
-
 }

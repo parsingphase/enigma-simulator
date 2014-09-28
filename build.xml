@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project name="parsingphase/enigma-simulator" default="test">
+
+    <target name="build"
+            description="Build for run only (no tests)"
+            >
+        <delete file="${basedir}/composer.lock" quiet="true"/>
+        <exec executable="composer" dir="${basedir}" failonerror="true">
+            <arg value="install"/>
+            <arg value="--no-dev"/>
+        </exec>
+    </target>
+
+    <target name="build-dev"
+            description="Build with dev environment"
+            >
+        <delete file="${basedir}/composer.lock" quiet="true"/>
+        <exec executable="composer" dir="${basedir}" failonerror="true">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="phplint"
+            description="Perform syntax check of modified sourcecode files"
+            >
+        <apply executable="php" failonerror="true">
+            <arg value="-l"/>
+            <arg value="-n"/>
+            <fileset dir="${basedir}">
+                <include name="**/*.php"/>
+                <exclude name="vendor/"/>
+            </fileset>
+        </apply>
+    </target>
+
+    <!-- quicker for manual run -->
+    <target name="test-built"
+            description="Run tests manually without delay of checking build"
+            depends="phplint,phpunit,phpcs,phpdox"/>
+
+    <target name="test"
+            description="Build and fully test project"
+            depends="build-dev,test-built,composer-validate"/>
+
+    <target name="phpunit-no-coverage"
+            description="Run all unit tests on the module (fast, skip coverage generation)">
+        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+            <!--<arg value="- -coverage-xml=build/coverage"/>-->
+            <arg value="--colors"/>
+            <arg value="${basedir}/tests"/>
+        </exec>
+    </target>
+
+    <target name="phpunit"
+            description="Run all unit tests on the module">
+        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+            <arg value="--coverage-xml=build/coverage"/>
+            <arg value="--colors"/>
+            <arg value="${basedir}/tests"/>
+        </exec>
+    </target>
+
+    <target name="phpcs"
+            description="Run PHP Codesniffer with PSR2 standard">
+        <exec executable="${basedir}/vendor/bin/phpcs" failonerror="true">
+            <arg value="-n"/>
+            <!-- no warnings -->
+            <arg value="--standard=PSR2"/>
+            <arg value="${basedir}/src"/>
+            <arg value="${basedir}/tests"/>
+        </exec>
+    </target>
+
+    <target name="phploc">
+        <exec executable="${basedir}/vendor/bin/phploc" failonerror="true">
+            <arg value="${basedir}/src"/>
+            <arg value="--log-xml=${basedir}/build/phploc.xml"/>
+        </exec>
+    </target>
+
+    <target name="phpdox" depends="phploc" description="Build class documentation">
+        <chmod file="${basedir}/vendor/theseer/phpdox/composer/bin/phpdox" perm="u+x"/>
+        <exec executable="${basedir}/vendor/bin/phpdox" failonerror="true">
+        </exec>
+    </target>
+
+    <target name="composer-validate"
+            description="Validate composer setup"
+            >
+        <exec executable="composer" dir="${basedir}" failonerror="true">
+            <arg value="validate"/>
+        </exec>
+    </target>
+
+    <target name="clean-artefacts">
+        <delete includeemptydirs="true">
+            <fileset dir="${basedir}/build" includes="**/*"/>
+        </delete>
+        <touch file="${basedir}/build/.placeholder"/>
+    </target>
+</project>

@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Plugboard.php">
+    <totals>
+      <lines total="58" comments="6" code="52" executable="21" executed="18" percent="85.71%"/>
+      <methods count="4" tested="3" percent="75.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="Plugboard" start="12" executable="21" executed="18" crap="10.29">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Phase\Enigma"/>
+      <method name="clearAllConnections" signature="clearAllConnections()" start="16" end="19" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="addCableConnection" signature="addCableConnection($from, $to)" start="21" end="37" crap="5.93" executable="9" executed="6" coverage="66.666666666667"/>
+      <method name="setCableConnections" signature="setCableConnections($assocArray)" start="39" end="46" crap="2" executable="5" executed="5" coverage="100"/>
+      <method name="getOutputCharacterForInputCharacter" signature="getOutputCharacterForInputCharacter($inputCharacter)" start="48" end="57" crap="2" executable="5" executed="5" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="18">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="19">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="23">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="27">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="31">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="35">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="36">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="37">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="41">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="43">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="44">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="45">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="46">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="50">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="51">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+      </line>
+      <line nr="52">
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+      </line>
+      <line nr="53">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+      <line nr="56">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #0"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #1"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #2"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #3"/>
+        <covered by="Phase\Enigma\PlugboardTest::testSubstitutions with data set #4"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

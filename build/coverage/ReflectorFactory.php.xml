@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="ReflectorFactory.php">
+    <totals>
+      <lines total="99" comments="10" code="89" executable="4" executed="3" percent="75.00%"/>
+      <methods count="2" tested="1" percent="50.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="ReflectorFactory" start="12" executable="4" executed="3" crap="2.06">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Phase\Enigma"/>
+      <method name="buildReflectorInstance" signature="buildReflectorInstance($instanceId)" start="87" end="93" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="getSupportedReflectorIdentities" signature="getSupportedReflectorIdentities()" start="95" end="98" crap="2" executable="1" executed="0" coverage="0"/>
+    </class>
+    <coverage>
+      <line nr="89">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="90">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="92">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

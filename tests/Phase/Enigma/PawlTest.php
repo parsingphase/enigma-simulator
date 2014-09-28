@@ -59,5 +59,4 @@ class PawlTest extends \PHPUnit_Framework_TestCase
 
         return $params;
     }
-
 }

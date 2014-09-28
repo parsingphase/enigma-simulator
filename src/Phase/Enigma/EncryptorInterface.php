@@ -9,7 +9,8 @@
 namespace Phase\Enigma;
 
 
-interface EncryptorInterface {
+interface EncryptorInterface
+{
 
     /**
      * Return the output for the given encryptor input in its current state

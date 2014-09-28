@@ -9,7 +9,8 @@
 namespace Phase\Enigma;
 
 
-interface EncryptorInterfaceReversible extends EncryptorInterface {
+interface EncryptorInterfaceReversible extends EncryptorInterface
+{
 
     /**
      * Return the output for the given encryptor input in its current state, swapping input and output terminals

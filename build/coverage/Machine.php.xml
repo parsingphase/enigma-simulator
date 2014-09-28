@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Machine.php">
+    <totals>
+      <lines total="170" comments="66" code="104" executable="49" executed="45" percent="91.84%"/>
+      <methods count="11" tested="7" percent="63.64%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="Machine" start="12" executable="49" executed="45" crap="19.20">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Phase\Enigma"/>
+      <method name="getPawls" signature="getPawls()" start="38" end="41" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="setPawls" signature="setPawls($pawls)" start="46" end="50" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="getPlugboard" signature="getPlugboard()" start="55" end="58" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="setPlugboard" signature="setPlugboard($plugboard)" start="63" end="66" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="getRotorSlots" signature="getRotorSlots()" start="71" end="74" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="setRotorSlots" signature="setRotorSlots($rotorSlots)" start="79" end="83" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="getReflector" signature="getReflector()" start="88" end="91" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="setReflector" signature="setReflector($reflector)" start="96" end="99" crap="1" executable="2" executed="2" coverage="100"/>
+      <method name="setupMechanicalInterconnects" signature="setupMechanicalInterconnects()" start="104" end="119" crap="4" executable="12" executed="12" coverage="100"/>
+      <method name="performTurnover" signature="performTurnover()" start="121" end="132" crap="4" executable="10" executed="10" coverage="100"/>
+      <method name="getOutputCharacterForInputCharacter" signature="getOutputCharacterForInputCharacter($inputCharacter)" start="140" end="169" crap="3" executable="13" executed="13" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="48">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="49">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="50">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="65">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="66">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="81">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="82">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="83">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="98">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="99">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="107">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="108">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="109">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="110">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="111">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="113">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="114">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="115">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="116">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="117">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="118">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="119">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="123">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="124">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="125">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="126">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="127">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="128">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="129">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="130">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="131">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="132">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="143">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="145">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="148">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="151">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="152">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="153">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="156">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="159">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="161">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="162">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="163">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="166">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+      <line nr="168">
+        <covered by="Phase\Enigma\MachineTest::testWholeMachine"/>
+        <covered by="Phase\Enigma\MachineTest::testM4Machine"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>
