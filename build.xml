@@ -36,7 +36,7 @@
     <!-- quicker for manual run -->
     <target name="test-built"
             description="Run tests manually without delay of checking build"
-            depends="phplint,phpunit,phpcs,phpdox"/>
+            depends="phplint,phpunit,phpcs"/> <!-- ,phpdox -->
 
     <target name="test"
             description="Build and fully test project"
