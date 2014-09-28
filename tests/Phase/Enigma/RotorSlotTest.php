@@ -37,8 +37,11 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
         $slot->setRotorOffset($rotorOffset);
 
         $slotOutput = $slot->getOutputCharacterForInputCharacter($slotInput);
-
         $this->assertSame($output, $slotOutput);
+
+        $slotOutputReversed = $slot->getOutputCharacterForInputCharacterReversedSignal($slotOutput);
+        $this->assertSame($slotOutputReversed, $slotInput);
+
     }
 
     public function singleSlotRotorOneRingOffsetOneDataProvider()

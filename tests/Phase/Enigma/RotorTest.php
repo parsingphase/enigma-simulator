@@ -172,6 +172,9 @@ class RotorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($testOutputCharacter,
             $rotor->getOutputCharacterForInputCharacter($testInputCharacter));
+
+        $this->assertSame($testInputCharacter,
+            $rotor->getOutputCharacterForInputCharacterReversedSignal($testOutputCharacter));
     }
 
     public function rotorIDataProvider()

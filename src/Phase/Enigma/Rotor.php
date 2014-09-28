@@ -100,6 +100,28 @@ class Rotor implements EncryptorInterface
      */
     public function getOutputCharacterForInputCharacter($inputCharacter)
     {
+        $outputCharacter = $this->encipherCharacterDirectional($inputCharacter, true);
+        return ($outputCharacter);
+    }
+
+    /**
+     * Return the output for the given encryptor input in its current state
+     *
+     * @param string $inputCharacter Single character, uppercase
+     * @return string Single character, uppercase
+     */
+    public function getOutputCharacterForInputCharacterReversedSignal($inputCharacter)
+    {
+        $outputCharacter = $this->encipherCharacterDirectional($inputCharacter, false);
+        return ($outputCharacter);
+    }
+
+    /**
+     * @param $inputCharacter
+     * @return string
+     */
+    protected function encipherCharacterDirectional($inputCharacter, $forwardDirection = true)
+    {
         $inputCharacter = strtoupper($inputCharacter);
 
         if (!preg_match('/^[A-Z]$/', $inputCharacter)) {
@@ -111,15 +133,16 @@ class Rotor implements EncryptorInterface
             $this->ringOffset - 1
         );
 
-        $coreOutputCharacter
-            = $this->coreMapping[$coreInputCharacter];
+        $mapping = $forwardDirection ? $this->coreMapping : array_flip($this->coreMapping);
+
+        $coreOutputCharacter = $mapping[$coreInputCharacter];
 
         $outputCharacter = $this->getCharacterOffsetBy(
             $coreOutputCharacter,
             0 - ($this->ringOffset - 1)
         );
 
-        return ($outputCharacter);
+        return $outputCharacter;
     }
 
     protected function getCharacterOffsetBy($character, $offset)
@@ -152,4 +175,5 @@ class Rotor implements EncryptorInterface
 
         return $char;
     }
+
 }

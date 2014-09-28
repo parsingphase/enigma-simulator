@@ -50,20 +50,42 @@ class RotorSlot implements EncryptorInterface
 
     public function getOutputCharacterForInputCharacter($inputCharacter)
     {
+        return $this->encipherCharacterDirectional($inputCharacter, true);
+    }
+
+    public function getOutputCharacterForInputCharacterReversedSignal($inputCharacter)
+    {
+        return $this->encipherCharacterDirectional($inputCharacter, false);
+    }
+
+
+    /**
+     * @param $inputCharacter
+     * @return string
+     */
+    protected function encipherCharacterDirectional($inputCharacter, $forward)
+    {
         $inputCharacter = strtoupper($inputCharacter);
         $rotorInputCharacter = $this->getCharacterOffsetBy(
             $inputCharacter,
             $this->rotorOffset - 1
         );
-        $rotorOutputCharacter = $this->rotor->getOutputCharacterForInputCharacter(
-            $rotorInputCharacter
-        );
+
+        if ($forward) {
+            $rotorOutputCharacter = $this->rotor->getOutputCharacterForInputCharacter(
+                $rotorInputCharacter
+            );
+        } else {
+            $rotorOutputCharacter = $this->rotor->getOutputCharacterForInputCharacterReversedSignal(
+                $rotorInputCharacter
+            );
+        }
+
         $outputCharacter = $this->getCharacterOffsetBy(
             $rotorOutputCharacter,
             0 - ($this->rotorOffset - 1)
         );
-
-        return ($outputCharacter);
+        return $outputCharacter;
     }
 
     protected function getCharacterOffsetBy($character, $offset)
@@ -158,6 +180,7 @@ class RotorSlot implements EncryptorInterface
      */
     public function canEngagePawl()
     {
-        return(($this->leftPawl && $this->leftPawl->canPush()) || ($this->rightPawl && $this->rightPawl->canPush()));
+        return (($this->leftPawl && $this->leftPawl->canPush()) || ($this->rightPawl && $this->rightPawl->canPush()));
     }
+
 }
