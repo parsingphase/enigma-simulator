@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <project name="parsingphase/enigma-simulator" default="test">
 
-    <target name="build"
-            description="Build for run only (no tests)"
+    <!--<property name="project.basedir" value="${basedir}"/> &lt;!&ndash; compat for jenkins-php vars &ndash;&gt;-->
+    <property name="toolsdir" value="${basedir}/vendor/bin/"/>
+
+
+    <target name="install"
+            description="Install for run only (no tests)"
             >
         <delete file="${basedir}/composer.lock" quiet="true"/>
         <exec executable="composer" dir="${basedir}" failonerror="true">
@@ -11,8 +15,8 @@
         </exec>
     </target>
 
-    <target name="build-dev"
-            description="Build with dev environment"
+    <target name="install-dev"
+            description="Install with dev environment"
             >
         <delete file="${basedir}/composer.lock" quiet="true"/>
         <exec executable="composer" dir="${basedir}" failonerror="true">
@@ -20,15 +24,18 @@
         </exec>
     </target>
 
-    <target name="phplint"
-            description="Perform syntax check of modified sourcecode files"
-            >
+    <target name="phplint" description="Perform syntax check of sourcecode files">
         <apply executable="php" failonerror="true">
             <arg value="-l"/>
-            <arg value="-n"/>
-            <fileset dir="${basedir}">
+
+            <fileset dir="${basedir}/src">
                 <include name="**/*.php"/>
-                <exclude name="vendor/"/>
+                <!--<modified/>-->
+            </fileset>
+
+            <fileset dir="${basedir}/tests">
+                <include name="**/*.php"/>
+                <!--<modified/>-->
             </fileset>
         </apply>
     </target>
@@ -36,11 +43,12 @@
     <!-- quicker for manual run -->
     <target name="test-built"
             description="Run tests manually without delay of checking build"
-            depends="phplint,phpunit,phpcs"/> <!-- ,phpdox -->
+            depends="phplint,phpunit,phpcs"/>
+    <!-- ,phpdox -->
 
     <target name="test"
             description="Build and fully test project"
-            depends="build-dev,test-built,composer-validate"/>
+            depends="install-dev,test-built,composer-validate"/>
 
     <target name="phpunit-no-coverage"
             description="Run all unit tests on the module (fast, skip coverage generation)">
@@ -54,7 +62,10 @@
     <target name="phpunit"
             description="Run all unit tests on the module">
         <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+            <!--<arg value="- -coverage-clover=build/coverage/index.xml"/> &lt;!&ndash; phpunit 3 ? &ndash;&gt;-->
             <arg value="--coverage-xml=build/coverage"/>
+            <arg value="--coverage-html=docs/coverage"/> <!-- until we can get it to integrate with phpdox -->
+            <arg value="--log-junit=build/logs/junit.xml"/>
             <arg value="--colors"/>
             <arg value="${basedir}/tests"/>
         </exec>
@@ -71,17 +82,21 @@
         </exec>
     </target>
 
-    <target name="phploc">
-        <exec executable="${basedir}/vendor/bin/phploc" failonerror="true">
-            <arg value="${basedir}/src"/>
-            <arg value="--log-xml=${basedir}/build/phploc.xml"/>
+    <target name="phploc"
+            description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
+        <exec executable="${toolsdir}phploc">
+            <arg value="--count-tests"/>
+            <arg path="${basedir}/src"/>
+            <arg path="${basedir}/tests"/>
         </exec>
     </target>
 
-    <target name="phpdox" depends="phploc" description="Build class documentation">
+    <!--<target name="phpdox" depends="phploc" description="Build class documentation">-->
+    <target name="phpdox"
+            depends="phploc-ci,phpcs-ci,phpmd-ci"
+            description="Generate project documentation using phpDox">
         <chmod file="${basedir}/vendor/theseer/phpdox/composer/bin/phpdox" perm="u+x"/>
-        <exec executable="${basedir}/vendor/bin/phpdox" failonerror="true">
-        </exec>
+        <exec executable="${toolsdir}phpdox" dir="${basedir}"/>
     </target>
 
     <target name="composer-validate"
@@ -98,4 +113,114 @@
         </delete>
         <touch file="${basedir}/build/.placeholder"/>
     </target>
+
+
+    <!-- various clauses brought in from http://jenkins-php.org/automation.html -->
+
+    <target name="build"
+            depends="prepare,phplint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,phpdox"
+            description=""/>
+
+    <target name="clean"
+            unless="clean.done"
+            description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/api"/>
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/logs"/>
+        <delete dir="${basedir}/build/pdepend"/>
+        <delete dir="${basedir}/build/phpdox"/>
+        <property name="clean.done" value="true"/>
+    </target>
+
+    <target name="prepare"
+            unless="prepare.done"
+            depends="clean"
+            description="Prepare for build">
+        <mkdir dir="${basedir}/build/api"/>
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/logs"/>
+        <mkdir dir="${basedir}/build/pdepend"/>
+        <mkdir dir="${basedir}/build/phpdox"/>
+        <property name="prepare.done" value="true"/>
+    </target>
+
+
+    <target name="phploc-ci"
+            depends="prepare"
+            description="Measure project size using PHPLOC and log result in CSV and XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${toolsdir}phploc">
+            <arg value="--count-tests"/>
+            <arg value="--log-csv"/>
+            <arg path="${basedir}/build/logs/phploc.csv"/>
+            <arg value="--log-xml"/>
+            <arg path="${basedir}/build/logs/phploc.xml"/>
+            <arg path="${basedir}/src"/>
+            <arg path="${basedir}/tests"/>
+        </exec>
+    </target>
+
+
+    <target name="pdepend"
+            depends="prepare"
+            description="Calculate software metrics using PHP_Depend and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${toolsdir}pdepend">
+            <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml"/>
+            <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg"/>
+            <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg"/>
+            <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
+    <target name="phpmd"
+            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${toolsdir}phpmd">
+            <arg path="${basedir}/src"/>
+            <arg value="text"/>
+            <arg path="${basedir}/phpmd.xml"/>
+        </exec>
+    </target>
+
+    <target name="phpmd-ci"
+            depends="prepare"
+            description="Perform project mess detection using PHPMD and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${toolsdir}phpmd">
+            <arg path="${basedir}/src"/>
+            <arg value="xml"/>
+            <arg path="${basedir}/phpmd.xml"/>
+            <arg value="--reportfile"/>
+            <arg path="${basedir}/build/logs/pmd.xml"/>
+        </exec>
+    </target>
+
+    <target name="phpcs-ci"
+            depends="prepare"
+            description="Find coding standard violations using PHP_CodeSniffer and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${toolsdir}phpcs" output="/dev/null">
+            <arg value="--report=checkstyle"/>
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml"/>
+            <arg value="--standard=PSR2"/>
+            <arg value="--extensions=php"/>
+            <arg value="--ignore=autoload.php"/>
+            <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
+
+    <target name="phpcpd"
+            description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${toolsdir}phpcpd">
+            <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
+    <target name="phpcpd-ci"
+            depends="prepare"
+            description="Find duplicate code using PHPCPD and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${toolsdir}phpcpd">
+            <arg value="--log-pmd"/>
+            <arg path="${basedir}/build/logs/pmd-cpd.xml"/>
+            <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
 </project>
