@@ -9,6 +9,8 @@ namespace Phase\Enigma;
 
 class Rotor implements EncryptorInterface
 {
+    use RotaryAlphaNumericTrait;
+
     /**
      * @var int Position of the ring relative to the core
      */
@@ -125,54 +127,23 @@ class Rotor implements EncryptorInterface
         $inputCharacter = strtoupper($inputCharacter);
 
         if (!preg_match('/^[A-Z]$/', $inputCharacter)) {
-            throw new \InvalidArgumentException;
+            throw new \InvalidArgumentException("Received '$inputCharacter' as input character, must be A-Z ");
         }
 
-        $coreInputCharacter = $this->getCharacterOffsetBy(
+        $coreInputCharacter = $this->incrementCharacterByOffset(
             $inputCharacter,
-            $this->ringOffset - 1
+            26 - ($this->ringOffset - 1)
         );
 
         $mapping = $forwardDirection ? $this->coreMapping : array_flip($this->coreMapping);
 
         $coreOutputCharacter = $mapping[$coreInputCharacter];
 
-        $outputCharacter = $this->getCharacterOffsetBy(
+        $outputCharacter = $this->incrementCharacterByOffset(
             $coreOutputCharacter,
-            0 - ($this->ringOffset - 1)
+            ($this->ringOffset - 1)
         );
 
         return $outputCharacter;
-    }
-
-    protected function getCharacterOffsetBy($character, $offset)
-    {
-        $charAsInt =
-            $this->charToAlphabetPosition($character);
-
-        $newInteger = (26 + $charAsInt - $offset) % 26;
-
-        if ($newInteger == 0) {
-            $newInteger = 26;
-        }
-
-        $newCharacter =
-            $this->alphabetPositionToCharacter($newInteger);
-
-        return ($newCharacter);
-    }
-
-    protected function charToAlphabetPosition($char)
-    {
-        $position = (ord($char) - 64);
-
-        return $position;
-    }
-
-    protected function alphabetPositionToCharacter($position)
-    {
-        $char = (chr($position + 64));
-
-        return $char;
     }
 }

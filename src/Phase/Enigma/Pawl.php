@@ -12,6 +12,8 @@ namespace Phase\Enigma;
 class Pawl
 {
 
+    use RotaryAlphaNumericTrait;
+
     /**
      * @var RotorSlot|null
      */
@@ -39,7 +41,7 @@ class Pawl
             $rotor = $this->rightRotorSlot->getRotor();
             $notchChars = $rotor->getNotchPositions();
             $rotorOffset = $this->rightRotorSlot->getRotorOffset();
-            $rotorOffsetChar = (chr($rotorOffset + 64)); //really need to normalise this at some point
+            $rotorOffsetChar = $this->alphabetPositionToCharacter($rotorOffset);
             $canPush = in_array($rotorOffsetChar, $notchChars);
         } else {
             $canPush = true;

@@ -11,6 +11,8 @@ namespace Phase\Enigma;
 class RotorSlot implements EncryptorInterface
 {
 
+    use RotaryAlphaNumericTrait;
+
     /**
      * @var Rotor
      */
@@ -66,7 +68,7 @@ class RotorSlot implements EncryptorInterface
     protected function encipherCharacterDirectional($inputCharacter, $forward)
     {
         $inputCharacter = strtoupper($inputCharacter);
-        $rotorInputCharacter = $this->getCharacterOffsetBy(
+        $rotorInputCharacter = $this->incrementCharacterByOffset(
             $inputCharacter,
             $this->rotorOffset - 1
         );
@@ -81,42 +83,11 @@ class RotorSlot implements EncryptorInterface
             );
         }
 
-        $outputCharacter = $this->getCharacterOffsetBy(
+        $outputCharacter = $this->incrementCharacterByOffset(
             $rotorOutputCharacter,
             0 - ($this->rotorOffset - 1)
         );
         return $outputCharacter;
-    }
-
-    protected function getCharacterOffsetBy($character, $offset)
-    {
-        $charAsInt =
-            $this->charToAlphabetPosition($character);
-
-        $newInteger = (26 + $charAsInt + $offset) % 26; // IMPORTANT! offsets work the other way from rings!
-
-        if ($newInteger == 0) {
-            $newInteger = 26;
-        }
-
-        $newCharacter =
-            $this->alphabetPositionToCharacter($newInteger);
-
-        return ($newCharacter);
-    }
-
-    protected function charToAlphabetPosition($char)
-    {
-        $position = (ord($char) - 64);
-
-        return $position;
-    }
-
-    protected function alphabetPositionToCharacter($position)
-    {
-        $char = (chr($position + 64));
-
-        return $char;
     }
 
     /**
