@@ -8,7 +8,10 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Simulates the physical reflector used in the Enigma machine
+ * @package Phase\Enigma
+ */
 class Reflector implements EncryptorInterface
 {
     /**

@@ -8,7 +8,10 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Simulates one of the set of mechanical levers that forms part of the turnover mechanism
+ * @package Phase\Enigma
+ */
 class Pawl
 {
 

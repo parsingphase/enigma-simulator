@@ -8,7 +8,10 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Build/configure various types of Reflectors according to fixed specifications
+ * @package Phase\Enigma
+ */
 class ReflectorFactory
 {
 

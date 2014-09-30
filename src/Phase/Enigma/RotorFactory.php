@@ -8,7 +8,10 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Build/configure instances of the various named rotor types
+ * @package Phase\Enigma
+ */
 class RotorFactory
 {
 

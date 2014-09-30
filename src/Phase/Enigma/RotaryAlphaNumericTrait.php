@@ -8,7 +8,10 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Common functions to do with interchange between alphabet position and character and rotary maths
+ * @package Phase\Enigma
+ */
 trait RotaryAlphaNumericTrait
 {
 

@@ -8,6 +8,10 @@
 
 namespace Phase\Enigma;
 
+/**
+ * Simulates physical rotor slots including Pawl interactions and Rotor offsets
+ * @package Phase\Enigma
+ */
 class RotorSlot implements EncryptorInterface
 {
 

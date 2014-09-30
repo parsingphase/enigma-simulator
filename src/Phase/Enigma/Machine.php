@@ -8,31 +8,43 @@
 
 namespace Phase\Enigma;
 
-
+/**
+ * Structural representation of a highly configurable Enigma machine
+ * @package Phase\Enigma
+ */
 class Machine implements EncryptorInterface
 {
 
     /**
+     * Array of RotorSlot objects, ordered 0..N, right-to-left, representing number of slots in this particular machine
      * @var RotorSlot[]
      */
     protected $rotorSlots;
 
     /**
+     * Array of Pawl objects, ordered 0..N, right-to-left, representing position of pawls in this particular machine.
+     * $pawls[n] lies to the right of $rotorSlots[n] and to the left of $rotorSlots[n-1]
+     *
      * @var Pawl[]
      */
     protected $pawls;
 
     /**
+     * Plugboard to be used. Currently required; leave unconfigured to simulate absence
+     * @todo Make this optional
+     *
      * @var Plugboard
      */
     protected $plugboard;
 
     /**
+     * Reflector to use, required
      * @var Reflector
      */
     protected $reflector;
 
     /**
+     * Get pawl positions, @see Machine::pawls
      * @return Pawl[]
      */
     public function getPawls()
@@ -41,6 +53,7 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * Set pawl positions, @see Machine::pawls for structure
      * @param Pawl[] $pawls
      */
     public function setPawls($pawls)
@@ -50,6 +63,7 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * Get plugboard object
      * @return Plugboard
      */
     public function getPlugboard()
@@ -58,14 +72,16 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * Set plugboard, @see Machine::plugboard
      * @param Plugboard $plugboard
      */
-    public function setPlugboard($plugboard)
+    public function setPlugboard(Plugboard $plugboard)
     {
         $this->plugboard = $plugboard;
     }
 
     /**
+     * Get rotor slots array
      * @return RotorSlot[]
      */
     public function getRotorSlots()
@@ -74,6 +90,7 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * Set rotor slots, @see Machine::rotorSlots for structure
      * @param RotorSlot[] $rotorSlots
      */
     public function setRotorSlots($rotorSlots)
@@ -91,9 +108,10 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * Set a configured Reflector
      * @param Reflector $reflector
      */
-    public function setReflector($reflector)
+    public function setReflector(Reflector $reflector)
     {
         $this->reflector = $reflector;
     }
@@ -118,6 +136,9 @@ class Machine implements EncryptorInterface
         }
     }
 
+    /**
+     * Handle the rotor turnover effects of a mechanical keypress
+     */
     public function performTurnover()
     {
         $rotorSlotsToTurn = [];

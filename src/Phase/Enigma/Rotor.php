@@ -7,6 +7,10 @@
  */
 namespace Phase\Enigma;
 
+/**
+ * Simulates a physical Enigma Rotor including internal wiring, turnover positions and effect of ring offset
+ * @package Phase\Enigma
+ */
 class Rotor implements EncryptorInterface
 {
     use RotaryAlphaNumericTrait;
