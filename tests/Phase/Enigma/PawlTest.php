@@ -59,4 +59,12 @@ class PawlTest extends \PHPUnit_Framework_TestCase
 
         return $params;
     }
+
+    public function testSetGetRightRotorSlot()
+    {
+        $rotorSlot = new RotorSlot();
+        $pawl = new Pawl();
+        $pawl->setRightRotorSlot($rotorSlot);
+        $this->assertSame($rotorSlot, $pawl->getRightRotorSlot());
+    }
 }

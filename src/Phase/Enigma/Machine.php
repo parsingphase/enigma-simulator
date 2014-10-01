@@ -19,7 +19,7 @@ class Machine implements EncryptorInterface
      * Array of RotorSlot objects, ordered 0..N, right-to-left, representing number of slots in this particular machine
      * @var RotorSlot[]
      */
-    protected $rotorSlots;
+    protected $rotorSlots = [];
 
     /**
      * Array of Pawl objects, ordered 0..N, right-to-left, representing position of pawls in this particular machine.
@@ -27,7 +27,7 @@ class Machine implements EncryptorInterface
      *
      * @var Pawl[]
      */
-    protected $pawls;
+    protected $pawls = [];
 
     /**
      * Plugboard to be used. Currently required; leave unconfigured to simulate absence
@@ -35,7 +35,7 @@ class Machine implements EncryptorInterface
      *
      * @var Plugboard
      */
-    protected $plugboard;
+    protected $plugboard = null;
 
     /**
      * Reflector to use, required

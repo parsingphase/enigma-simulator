@@ -165,4 +165,39 @@ class MachineTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($plainOutput, $enciphered);
     }
+
+    public function testSetGetPawls()
+    {
+        $pawls = [new Pawl(), null, new Pawl()]; //Our system explicitly permits missing pawls
+        $machine = new Machine();
+        $machine->setPawls($pawls);
+        $this->assertSame($pawls, $machine->getPawls());
+    }
+
+    public function testSetGetPlugboard()
+    {
+        $machine = new Machine();
+        $defaultPlugboard = $machine->getPlugboard();
+        $this->assertNull($defaultPlugboard);
+        $plugboard = new Plugboard();
+        $machine->setPlugboard($plugboard);
+        $this->assertSame($plugboard, $machine->getPlugboard());
+    }
+
+    public function testSetGetReflector()
+    {
+        $reflector = new Reflector();
+        $machine = new Machine();
+        $machine->setReflector($reflector);
+        $this->assertSame($reflector, $machine->getReflector());
+    }
+
+    public function testSetGetRotorSlots()
+    {
+        $slots = [new RotorSlot(), new RotorSlot()];
+        $machine = new Machine();
+        $machine->setRotorSlots($slots);
+        $this->assertSame($slots, $machine->getRotorSlots());
+        //TODO assert that array has no gaps
+    }
 }
