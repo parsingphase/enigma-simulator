@@ -305,43 +305,15 @@ class RotorTest extends \PHPUnit_Framework_TestCase
      * @dataProvider badCharacterIDataProvider
      * @expectedException \InvalidArgumentException
      */
-    public function testEncryptBadCharacter($characters)
+    public function testEncryptBadCharacter($character)
     {
-        $rotor = new Rotor();
-        $coreMapping = [
-            'A' => 'E',
-            'B' => 'K',
-            'C' => 'M',
-            'D' => 'F',
-            'E' => 'L',
-            'F' => 'G',
-            'G' => 'D',
-            'H' => 'Q',
-            'I' => 'V',
-            'J' => 'Z',
-            'K' => 'N',
-            'L' => 'T',
-            'M' => 'O',
-            'N' => 'W',
-            'O' => 'Y',
-            'P' => 'H',
-            'Q' => 'X',
-            'R' => 'U',
-            'S' => 'S',
-            'T' => 'P',
-            'U' => 'A',
-            'V' => 'I',
-            'W' => 'B',
-            'X' => 'R',
-            'Y' => 'C',
-            'Z' => 'J'
-        ];
-        $offset = 0;
-        $rotor->setRingOffset($offset);
-        $rotor->setCoreMapping($coreMapping);
+        $rotorFactory = new RotorFactory();
+        $rotor = $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_EIGHT); // use known good
+
+        $rotor->setRingOffset('A');
 
         // and this should cause the exception:
-        $rotor->getOutputCharacterForInputCharacter($characters);
+        $rotor->getOutputCharacterForInputCharacter($character);
     }
 
 

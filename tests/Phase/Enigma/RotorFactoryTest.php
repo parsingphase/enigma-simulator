@@ -95,4 +95,21 @@ class RotorFactoryTest extends \PHPUnit_Framework_TestCase
             $this->assertRegExp('/^[A-Z]$/', $position);
         }
     }
+
+    /**
+     * Ensure that getSupportedRotorIdentities returns rotor IDs that are valid for buildRotorInstance
+     * Exercised by supportedRotorsDataProvider but that doesn't count for coverage purposes
+     * See: https://github.com/sebastianbergmann/phpunit/issues/1450#issuecomment-57428548
+     */
+    public function testGetRotorIdentities()
+    {
+        $factory = new RotorFactory();
+        $rotorIds = $factory->getSupportedRotorIdentities();
+        $this->assertTrue(is_array($rotorIds));
+        $this->assertTrue(count($rotorIds) > 0);
+        foreach ($rotorIds as $rotorId) {
+            $rotor = $factory->buildRotorInstance($rotorId);
+            $this->assertTrue($rotor instanceof Rotor);
+        }
+    }
 }
