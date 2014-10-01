@@ -18,22 +18,22 @@ class Plugboard implements EncryptorInterface
         $this->connections = [];
     }
 
-    public function addCableConnection($from, $to)
+    public function addCableConnection($fromCharacter, $toCharacter)
     {
-        if (!(preg_match('/^[A-Z]$/', $from) && preg_match('/^[A-Z]$/', $to))) {
-            throw new \InvalidArgumentException("Invalid pair $from-$to");
+        if (!(preg_match('/^[A-Z]$/', $fromCharacter) && preg_match('/^[A-Z]$/', $toCharacter))) {
+            throw new \InvalidArgumentException("Invalid pair $fromCharacter-$toCharacter");
         }
 
-        if (isset($this->connections[$from])) {
-            throw new \InvalidArgumentException("Socket $from already used");
+        if (isset($this->connections[$fromCharacter])) {
+            throw new \InvalidArgumentException("Socket $fromCharacter already used");
         }
 
-        if (isset($this->connections[$to])) {
-            throw new \InvalidArgumentException("Socket $to already used");
+        if (isset($this->connections[$toCharacter])) {
+            throw new \InvalidArgumentException("Socket $toCharacter already used");
         }
 
-        $this->connections[$from] = $to;
-        $this->connections[$to] = $from;
+        $this->connections[$fromCharacter] = $toCharacter;
+        $this->connections[$toCharacter] = $fromCharacter;
     }
 
     public function setCableConnections($assocArray)

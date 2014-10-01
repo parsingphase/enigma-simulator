@@ -180,6 +180,18 @@
         </exec>
     </target>
 
+    <target name="phpmd-html"
+            description="Perform project mess detection using PHPMD and print HTML output. Intended for usage on the command line before committing.">
+        <mkdir dir="${basedir}/docs/pmd"/>
+        <exec executable="${toolsdir}phpmd">
+            <arg path="${basedir}/src"/>
+            <arg value="html"/>
+            <arg path="${basedir}/phpmd.xml"/>
+            <arg value="--reportfile"/>
+            <arg path="${basedir}/docs/pmd/index.html"/>
+        </exec>
+    </target>
+
     <target name="phpmd-ci"
             depends="prepare"
             description="Perform project mess detection using PHPMD and log result in XML format. Intended for usage within a continuous integration environment.">
