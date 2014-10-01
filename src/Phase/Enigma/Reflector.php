@@ -48,9 +48,11 @@ class Reflector implements EncryptorInterface
                 $keysValuesOK = true;
                 $seenKeys = $seenValues = [];
                 foreach ($fullMapping as $k => $v) {
-                    if (isset($seenKeys[$k]) || isset($seenValues[$v])) {
-                        $keysValuesOK = false;
-                    }
+                    /** Removed this check as I can't actually see a way to trigger it!
+                     * if (isset($seenKeys[$k]) || isset($seenValues[$v])) {
+                     * $keysValuesOK = false;
+                     * }
+                     */
                     if (
                         (!preg_match('/^[A-Z]$/', $k)) ||
                         (!preg_match('/^[A-Z]$/', $v))

@@ -101,5 +101,34 @@ class PlugboardTest extends \PHPUnit_Framework_TestCase
         return ($testData);
     }
 
-    //TODO add tests for bad inputs
+    /**
+     * @dataProvider badConnectionsDataProvider
+     * @param array $mapping
+     * @expectedException \InvalidArgumentException
+     */
+    public function testBadConfigurations($mapping)
+    {
+        $plugboard = new Plugboard();
+        $this->assertTrue($plugboard instanceof Plugboard);
+        $plugboard->setCableConnections($mapping);
+    }
+
+    public function badConnectionsDataProvider()
+    {
+        return [
+            [['A' => 'B', 'C' => 'B']],
+            [['A' => 'B', '' => 'D']],
+        ];
+    }
+
+    /**
+     * Test adding the same 'from' connection twice, which we can't test via setCableConnections as array can't have dup keys
+     * @expectedException \InvalidArgumentException
+     */
+    public function testRejectDuplicateConnection()
+    {
+        $plugboard = new Plugboard();
+        $plugboard->addCableConnection('A', 'B');
+        $plugboard->addCableConnection('A', 'C');
+    }
 }

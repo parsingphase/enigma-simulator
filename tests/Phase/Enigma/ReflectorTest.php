@@ -108,19 +108,21 @@ class ReflectorTest extends \PHPUnit_Framework_TestCase
                 ]
             ],
             [ // non-char elements
-                1 => 25,
-                'B' => 'R',
-                'C' => 'U',
-                'D' => 'H',
-                'E' => 'Q',
-                'F' => 'S',
-                'G' => 'L',
-                'I' => 'P',
-                'J' => 'X',
-                'K' => 'N',
-                'M' => 'O',
-                'T' => 'Z',
-                'V' => 'W'
+                [
+                    'A' => '',
+                    'B' => 'R',
+                    'C' => 'U',
+                    'D' => 'H',
+                    'E' => 'Q',
+                    'F' => 'S',
+                    'G' => 'L',
+                    'I' => 'P',
+                    'J' => 'X',
+                    'K' => 'N',
+                    'M' => 'O',
+                    'T' => 'Z',
+                    'V' => 'W'
+                ]
             ]
 
         ];
