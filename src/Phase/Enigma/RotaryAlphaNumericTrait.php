@@ -17,6 +17,9 @@ trait RotaryAlphaNumericTrait
 
     protected function incrementCharacterByOffset($character, $offset)
     {
+        if (!is_integer($offset)) {
+            throw new \InvalidArgumentException('Offset must be integer');
+        }
         $offset = $offset % 26; // -25..0..25
 
         if ($offset < 0) {

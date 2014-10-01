@@ -228,4 +228,31 @@ class RotorSlotTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($leftRotorSlot->canEngagePawl());
         $this->assertTrue($rightRotorSlot->canEngagePawl());
     }
+
+    public function testGetSetPawls()
+    {
+        $leftPawl = new Pawl();
+        $rightPawl = new Pawl();
+        $rotorSlot = new RotorSlot();
+        $rotorSlot->setLeftPawl($leftPawl);
+        $rotorSlot->setRightPawl($rightPawl);
+        $this->assertSame($leftPawl, $rotorSlot->getLeftPawl());
+        $this->assertSame($rightPawl, $rotorSlot->getRightPawl());
+    }
+
+    /**
+     * @param $offset
+     * @dataProvider badRotorOffsetDataProvider
+     * @expectedException \InvalidArgumentException
+     */
+    public function testRejectBadRotorOffset($offset)
+    {
+        $rotorSlot = new RotorSlot();
+        $rotorSlot->setRotorOffset($offset);
+    }
+
+    public function badRotorOffsetDataProvider()
+    {
+        return [[0],[null],['z']];
+    }
 }

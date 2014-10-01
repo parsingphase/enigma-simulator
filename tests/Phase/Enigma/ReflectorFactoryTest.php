@@ -11,23 +11,17 @@ namespace Phase\Enigma;
 
 class ReflectorFactoryTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @param Reflector $reflector
-     * @dataProvider supportedReflectorsDataProvider
-     */
-    public function testBuildAllReflectorsNoExceptions(Reflector $reflector)
-    {
-        $this->assertTrue($reflector instanceof EncryptorInterface);
-    }
 
-    public function supportedReflectorsDataProvider()
+    /**
+     * Ensure that all supported reflector IDs can be built into reflectors
+     */
+    public function testSupportedReflectorsList()
     {
         $factory = new ReflectorFactory();
-        $rotorIds = $factory->getSupportedReflectorIdentities();
-        $parameterLists = [];
-        foreach ($rotorIds as $reflectorId) {
-            $parameterLists[] = [$factory->buildReflectorInstance($reflectorId)];
+        $reflectorIds = $factory->getSupportedReflectorIdentities();
+        foreach ($reflectorIds as $reflectorId) {
+            $reflector = $factory->buildReflectorInstance($reflectorId);
+            $this->assertTrue($reflector instanceof Reflector);
         }
-        return $parameterLists;
     }
 }
