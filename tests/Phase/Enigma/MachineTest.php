@@ -73,6 +73,67 @@ class MachineTest extends \PHPUnit_Framework_TestCase
     }
 
 
+
+    public function testWholeMachineNoPlugboard()
+    {
+        $machine = new Machine();
+
+        $rotorFactory = new RotorFactory();
+
+        $rotors = [
+            $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_ONE),
+            $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_TWO),
+            $rotorFactory->buildRotorInstance(RotorFactory::ROTOR_THREE),
+        ];
+
+        /* @var Rotor[] $rotors */
+        $rotors[0]->setRingOffset('C');
+        $rotors[1]->setRingOffset('A');
+        $rotors[2]->setRingOffset('A');
+
+        /* @var RotorSlot[] $rotorSlots */
+        $rotorSlots = [
+            new RotorSlot(),
+            new RotorSlot(),
+            new RotorSlot(),
+        ];
+
+        foreach ($rotorSlots as $k => $v) {
+            $v->loadRotor($rotors[$k]);
+        }
+
+        $rotorSlots[0]->setRotorOffset('P');
+        $rotorSlots[1]->setRotorOffset('A');
+        $rotorSlots[2]->setRotorOffset('A');
+
+        /* @var Pawl[] $pawls */
+        $pawls = [
+            new Pawl(),
+            new Pawl(),
+            new Pawl(),
+        ];
+
+        $reflectorFactory = new ReflectorFactory();
+        $reflector = $reflectorFactory->buildReflectorInstance(ReflectorFactory::REFLECTOR_B);
+
+        $machine->setRotorSlots($rotorSlots);
+        $machine->setPawls($pawls);
+//        $machine->setPlugboard(new Plugboard()); // defaults
+        $machine->setReflector($reflector);
+
+        $messageString = strtoupper('ActionThisDay');
+        $messageArray = preg_split('//', $messageString, -1, PREG_SPLIT_NO_EMPTY);
+
+        $out = [];
+
+        foreach ($messageArray as $inChar) {
+            $out[] = $machine->getOutputCharacterForInputCharacter($inChar);
+        }
+        $enciphered = join('', $out);
+
+        $this->assertSame('DWOUFBIGODOGS', $enciphered);
+    }
+
     /**
      * Test with message from http://users.telenet.be/d.rijmenants/en/m4project.htm
      * Note: using B-THIN reflector

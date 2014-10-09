@@ -30,8 +30,7 @@ class Machine implements EncryptorInterface
     protected $pawls = [];
 
     /**
-     * Plugboard to be used. Currently required; leave unconfigured to simulate absence
-     * @todo Make this optional
+     * Plugboard to be used, if any.
      *
      * @var Plugboard
      */
@@ -165,8 +164,10 @@ class Machine implements EncryptorInterface
 
         $signal = $inputCharacter;
 
-        // Route through plugboard
-        $signal = $this->plugboard->getOutputCharacterForInputCharacter($signal);
+        if ($this->plugboard) {
+            // Route through plugboard
+            $signal = $this->plugboard->getOutputCharacterForInputCharacter($signal);
+        }
 
         // Route through each rotor slot in turn, right to left
         foreach ($this->rotorSlots as $rotorSlot) {
@@ -183,8 +184,10 @@ class Machine implements EncryptorInterface
             $signal = $rotorSlot->getOutputCharacterForInputCharacterReversedSignal($signal);
         }
 
-        // Route back out through the plugboard (which is symmetrical)
-        $signal = $this->plugboard->getOutputCharacterForInputCharacter($signal);
+        if ($this->plugboard) {
+            // Route back out through the plugboard (which is symmetrical)
+            $signal = $this->plugboard->getOutputCharacterForInputCharacter($signal);
+        }
 
         return $signal;
     }
