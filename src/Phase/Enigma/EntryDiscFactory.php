@@ -23,7 +23,7 @@ class EntryDiscFactory
 
     /**
      * @param $instanceId
-     * @return Reflector
+     * @return EntryDisc
      */
     public function buildEntryDiscInstance($instanceId)
     {
