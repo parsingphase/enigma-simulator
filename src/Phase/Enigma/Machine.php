@@ -43,6 +43,11 @@ class Machine implements EncryptorInterface
     protected $reflector;
 
     /**
+     * @var EntryDisc
+     */
+    protected $entryDisc;
+
+    /**
      * Get pawl positions, @see Machine::pawls
      * @return Pawl[]
      */
@@ -116,6 +121,22 @@ class Machine implements EncryptorInterface
     }
 
     /**
+     * @return EntryDisc
+     */
+    public function getEntryDisc()
+    {
+        return $this->entryDisc;
+    }
+
+    /**
+     * @param EntryDisc $entryDisc
+     */
+    public function setEntryDisc(EntryDisc $entryDisc)
+    {
+        $this->entryDisc = $entryDisc;
+    }
+
+    /**
      * Reset the mechanical interconnections between pawls and rotors for as many of each as are currently configured
      */
     public function setupMechanicalInterconnects()
@@ -169,6 +190,8 @@ class Machine implements EncryptorInterface
             $signal = $this->plugboard->getOutputCharacterForInputCharacter($signal);
         }
 
+        $signal=$this->entryDisc->getOutputCharacterForInputCharacter($signal);
+
         // Route through each rotor slot in turn, right to left
         foreach ($this->rotorSlots as $rotorSlot) {
             $signal = $rotorSlot->getOutputCharacterForInputCharacter($signal);
@@ -183,6 +206,8 @@ class Machine implements EncryptorInterface
         foreach ($rotorSlotsBackwards as $rotorSlot) {
             $signal = $rotorSlot->getOutputCharacterForInputCharacterReversedSignal($signal);
         }
+
+        $signal=$this->entryDisc->getOutputCharacterForInputCharacterReversedSignal($signal);
 
         if ($this->plugboard) {
             // Route back out through the plugboard (which is symmetrical)

@@ -54,6 +54,9 @@ class MachineTest extends \PHPUnit_Framework_TestCase
         $reflectorFactory = new ReflectorFactory();
         $reflector = $reflectorFactory->buildReflectorInstance(ReflectorFactory::REFLECTOR_B);
 
+        $entryDiscFactory = new EntryDiscFactory();
+        $entryDisc = $entryDiscFactory->buildEntryDiscInstance(EntryDiscFactory::ENTRYDISC_ALPHABET);
+        $machine->setEntryDisc($entryDisc);
         $machine->setRotorSlots($rotorSlots);
         $machine->setPawls($pawls);
         $machine->setPlugboard(new Plugboard()); // defaults
@@ -71,7 +74,6 @@ class MachineTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('DWOUFBIGODOGS', $enciphered);
     }
-
 
 
     public function testWholeMachineNoPlugboard()
@@ -116,9 +118,13 @@ class MachineTest extends \PHPUnit_Framework_TestCase
         $reflectorFactory = new ReflectorFactory();
         $reflector = $reflectorFactory->buildReflectorInstance(ReflectorFactory::REFLECTOR_B);
 
+        $entryDiscFactory = new EntryDiscFactory();
+        $entryDisc = $entryDiscFactory->buildEntryDiscInstance(EntryDiscFactory::ENTRYDISC_ALPHABET);
+        $machine->setEntryDisc($entryDisc);
+
         $machine->setRotorSlots($rotorSlots);
         $machine->setPawls($pawls);
-//        $machine->setPlugboard(new Plugboard()); // defaults
+        //        $machine->setPlugboard(new Plugboard()); // defaults
         $machine->setReflector($reflector);
 
         $messageString = strtoupper('ActionThisDay');
@@ -200,6 +206,10 @@ class MachineTest extends \PHPUnit_Framework_TestCase
             ]
         );
 
+        $entryDiscFactory = new EntryDiscFactory();
+        $entryDisc = $entryDiscFactory->buildEntryDiscInstance(EntryDiscFactory::ENTRYDISC_ALPHABET);
+        $machine->setEntryDisc($entryDisc);
+
         $machine->setRotorSlots($rotorSlots);
         $machine->setPawls($pawls);
         $machine->setPlugboard($plugboard);
@@ -260,5 +270,13 @@ class MachineTest extends \PHPUnit_Framework_TestCase
         $machine->setRotorSlots($slots);
         $this->assertSame($slots, $machine->getRotorSlots());
         //TODO assert that array has no gaps
+    }
+
+    public function testSetGetEntryDisc()
+    {
+        $disc = new EntryDisc();
+        $machine = new Machine();
+        $machine->setEntryDisc($disc);
+        $this->assertSame($disc, $machine->getEntryDisc());
     }
 }
