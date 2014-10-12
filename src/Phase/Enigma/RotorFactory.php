@@ -23,6 +23,7 @@ class RotorFactory
     const ROTOR_SIX = 6;
     const ROTOR_SEVEN = 7;
     const ROTOR_EIGHT = 8;
+    // Note: Beta, Gamma wheels do not turn over and can only be used in the M4 enigma, in the leftmost slot, with a thin reflector
     const ROTOR_BETA = 'B';
     const ROTOR_GAMMA = 'G';
 
