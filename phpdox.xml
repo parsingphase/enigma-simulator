@@ -9,7 +9,7 @@
     <bootstrap />
 
     <!-- A phpDox project to process, you can have multiple projects in one config file -->
-    <project name="phpdox" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
+    <project name="Enigma Simulator" source="${basedir}/src" workdir="${basedir}/build/phpdox/xml">
     <!--<project name="phpdox" source="${basedir}/src/Phase/Enigma" workdir="${basedir}/build/phpdox/xml">-->
         <!-- source path modified as workaround for https://github.com/theseer/phpdox/issues/147 -->
         <!--  @name    - The name of the project -->
