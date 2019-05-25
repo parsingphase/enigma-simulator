@@ -9,6 +9,5 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
-          - curl ifconfig.co
           - composer install
           - ./vendor/bin/phpunit tests
