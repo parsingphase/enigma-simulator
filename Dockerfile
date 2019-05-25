@@ -19,7 +19,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN php composer-setup.php && \
     mv composer.phar /usr/local/bin/composer && \
     composer self-update
-RUN apt-get install -y libxslt-dev git curl unzip zlib1g-dev && \
+RUN apt-get install -y libxslt-dev git curl unzip zlib1g-dev ant && \
     docker-php-ext-install xsl zip
 
 ENTRYPOINT [ "/bin/bash" ]

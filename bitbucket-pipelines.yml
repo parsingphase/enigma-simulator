@@ -3,11 +3,10 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: parsingphase/php-tests:7.0
+image: parsingphase/php-73-build
 
 pipelines:
   default:
     - step:
-        script: # Modify the commands below to build your repository.
-          - composer install
-          - ./vendor/bin/phpunit tests
+        script:
+          - ant test
